@@ -41,32 +41,32 @@
       <recent name="$PROJECT_DIR$/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Makefile.build-client">
+  <component name="RunManager" selected="Docker.workflows/Dockerfile">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="cryptoTrader" />
       <working_directory value="$PROJECT_DIR$/" />
       <go_parameters value="-i" />
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/" />
-      <package value="github.com/ivandonyk/Crypto-Trader" />
+      <package value="github.com/brharrelldev/crytoTrader" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build github.com/ivandonyk/Crypto-Trader/client" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build github.com/brharrelldev/crytoTrader/client" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="cryptoTrader" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
       <filePath value="$PROJECT_DIR$/client/main.go" />
-      <package value="github.com/ivandonyk/Crypto-Trader/client" />
+      <package value="github.com/brharrelldev/crytoTrader/client" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build github.com/ivandonyk/Crypto-Trader/integration" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build github.com/brharrelldev/crytoTrader/integration" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="cryptoTrader" />
       <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
       <filePath value="$PROJECT_DIR$/integration/integration.go" />
-      <package value="github.com/ivandonyk/Crypto-Trader/integration" />
+      <package value="github.com/brharrelldev/crytoTrader/integration" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
@@ -76,7 +76,7 @@
       <go_parameters value="-i" />
       <framework value="gotest" />
       <kind value="DIRECTORY" />
-      <package value="github.com/ivandonyk/Crypto-Trader" />
+      <package value="github.com/brharrelldev/crytoTrader" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
       <method v="2" />
@@ -93,12 +93,22 @@
       </makefile>
       <method v="2" />
     </configuration>
+    <configuration name="workflows/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
+      <deployment type="dockerfile">
+        <settings>
+          <option name="buildOnly" value="true" />
+          <option name="sourceFilePath" value="../cryptoTrader/.github/workflows/Dockerfile" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Docker.workflows/Dockerfile" />
         <item itemvalue="Makefile.build-client" />
         <item itemvalue="Makefile.make-bin" />
-        <item itemvalue="Go Build.go build github.com/ivandonyk/Crypto-Trader/client" />
-        <item itemvalue="Go Build.go build github.com/ivandonyk/Crypto-Trader/integration" />
+        <item itemvalue="Go Build.go build github.com/brharrelldev/crytoTrader/client" />
+        <item itemvalue="Go Build.go build github.com/brharrelldev/crytoTrader/integration" />
       </list>
     </recent_temporary>
   </component>
@@ -107,7 +117,17 @@
       <list>
         <serviceView>
           <treeState>
-            <expand />
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Docker" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Docker" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="Containers" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
             <select />
           </treeState>
         </serviceView>
@@ -122,32 +142,36 @@
     <proxy>direct</proxy>
   </component>
   <component name="WindowStateProjectService">
-    <state width="2518" height="395" key="GridCell.Tab.0.bottom" timestamp="1580665838858">
+    <state width="2518" height="395" key="GridCell.Tab.0.bottom" timestamp="1580669636238">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state width="1638" height="267" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1580615388891" />
-    <state width="2518" height="395" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580665838858" />
-    <state width="2518" height="395" key="GridCell.Tab.0.center" timestamp="1580665838857">
+    <state width="2518" height="395" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580669636238" />
+    <state width="2518" height="395" key="GridCell.Tab.0.center" timestamp="1580669636237">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state width="1638" height="267" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1580615388808" />
     <state width="1638" height="267" key="GridCell.Tab.0.center/0.23.1680.954@0.0.1680.977" timestamp="1580615388690" />
-    <state width="2518" height="395" key="GridCell.Tab.0.center/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580665838857" />
-    <state width="2518" height="395" key="GridCell.Tab.0.left" timestamp="1580665838856">
+    <state width="2518" height="395" key="GridCell.Tab.0.center/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580669636237" />
+    <state width="2518" height="395" key="GridCell.Tab.0.left" timestamp="1580669636236">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state width="1638" height="267" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1580615388805" />
     <state width="1638" height="267" key="GridCell.Tab.0.left/0.23.1680.954@0.23.1680.954" timestamp="1580615388604" />
-    <state width="2518" height="395" key="GridCell.Tab.0.left/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580665838856" />
-    <state width="2518" height="395" key="GridCell.Tab.0.right" timestamp="1580665838858">
+    <state width="2518" height="395" key="GridCell.Tab.0.left/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580669636236" />
+    <state width="2518" height="395" key="GridCell.Tab.0.right" timestamp="1580669636237">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state width="1638" height="267" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1580615388840" />
-    <state width="2518" height="395" key="GridCell.Tab.0.right/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580665838858" />
+    <state width="2518" height="395" key="GridCell.Tab.0.right/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580669636237" />
     <state x="2491" y="359" key="SettingsEditor" timestamp="1580666638657">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state x="2491" y="359" key="SettingsEditor/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580666638657" />
+    <state x="2596" y="461" width="727" height="518" key="find.popup" timestamp="1580671571265">
+      <screen x="1680" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2596" y="461" width="727" height="518" key="find.popup/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580671571265" />
     <state x="2450" y="316" width="1021" height="1017" key="search.everywhere.popup" timestamp="1580663633697">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>

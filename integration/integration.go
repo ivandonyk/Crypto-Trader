@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/ivandonyk/Crypto-Trader/config"
-	"github.com/ivandonyk/Crypto-Trader/general"
+	"github.com/brharrelldev/crytoTrader/config"
+	"github.com/brharrelldev/crytoTrader/general"
 	"log"
 )
 
@@ -14,33 +14,32 @@ func main() {
 	}
 
 	ping, err := general.NewGeneralAPI(&c)
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
 	resp, err := ping.GetPing()
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
 	pingJson, err := resp.ToJson()
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
 	fmt.Println(pingJson)
 
 	serverTime, err := ping.CheckServiceTime()
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
 	serverTimeJson, err := serverTime.ToJson()
-	if err != nil{
+	if err != nil {
 		log.Fatal(err)
 	}
 
 	fmt.Println(serverTimeJson)
-
 
 }

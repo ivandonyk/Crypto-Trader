@@ -2,22 +2,19 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/ivandonyk/Crypto-Trader/config"
-	"github.com/ivandonyk/Crypto-Trader/general"
+	"github.com/brharrelldev/crytoTrader/config"
+	"github.com/brharrelldev/crytoTrader/general"
 	"github.com/urfave/cli"
 )
 
 const (
-	BaseURL = "https://api.binance.com"
+	baseURL = "https://api.binance.com"
 )
 
+//Binance commands
 var BinanceCmd cli.Command
-var conf *config.Config
 
 func init() {
-	conf = &config.Config{
-		BaseURL: BaseURL,
-	}
 
 	BinanceCmd.Name = "binance"
 	BinanceCmd.Usage = "binance <action>"
@@ -25,16 +22,19 @@ func init() {
 		{
 			Name:    "server-time",
 			Aliases: []string{"st"},
-			Action:  ServerTimeAction,
+			Action:  serverTimeAction,
 		},
 		{
 			Name:   "ping",
-			Action: PingAction,
+			Action: pingAction,
 		},
 	}
 }
 
-func PingAction(c *cli.Context) error {
+func pingAction(c *cli.Context) error {
+	conf := &config.Config{
+		BaseURL: baseURL,
+	}
 	ping, err := general.NewGeneralAPI(conf)
 	if err != nil {
 		return fmt.Errorf("could not instantiate general api")
@@ -42,7 +42,7 @@ func PingAction(c *cli.Context) error {
 
 	pingResp, err := ping.GetPing()
 	if err != nil {
-		return fmt.Errorf("error occured when checking server time %v", err)
+		return fmt.Errorf("error occurred when checking server time %v", err)
 	}
 
 	pingJson, err := pingResp.ToJson()
@@ -55,7 +55,10 @@ func PingAction(c *cli.Context) error {
 	return nil
 }
 
-func ServerTimeAction(c *cli.Context) error {
+func serverTimeAction(c *cli.Context) error {
+	conf := &config.Config{
+		BaseURL: baseURL,
+	}
 
 	st, err := general.NewGeneralAPI(conf)
 	if err != nil {
@@ -64,7 +67,7 @@ func ServerTimeAction(c *cli.Context) error {
 
 	stResp, err := st.CheckServiceTime()
 	if err != nil {
-		return fmt.Errorf("error occured when checking server time %v", err)
+		return fmt.Errorf("error occurred when checking server time %v", err)
 	}
 
 	stJson, err := stResp.ToJson()

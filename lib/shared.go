@@ -6,11 +6,13 @@ import (
 	"strings"
 )
 
+//common method for joining url.  I'm sure there is a library for this
 func URLJoin(base, endpoint string) string {
 
 	return strings.Join([]string{base, endpoint}, "")
 }
 
+//common json encoding method to reduce repetitive code
 func ToJson(resp interface{}) (string, error) {
 
 	jsonBytes, err := json.Marshal(resp)
@@ -19,5 +21,4 @@ func ToJson(resp interface{}) (string, error) {
 	}
 
 	return string(jsonBytes), nil
-
 }

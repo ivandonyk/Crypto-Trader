@@ -41,7 +41,7 @@
       <recent name="$PROJECT_DIR$/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Docker.workflows/Dockerfile">
+  <component name="RunManager" selected="Makefile.test-build">
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="cryptoTrader" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -52,22 +52,26 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build github.com/brharrelldev/crytoTrader/client" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGeneral_CheckServiceTime in github.com/brharrelldev/crytoTrader/general" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="cryptoTrader" />
-      <working_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$/../cryptoTrader/general" />
+      <framework value="gotest" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/client/main.go" />
-      <package value="github.com/brharrelldev/crytoTrader/client" />
+      <package value="github.com/brharrelldev/crytoTrader/general" />
       <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestGeneral_CheckServiceTime$" />
       <method v="2" />
     </configuration>
-    <configuration name="go build github.com/brharrelldev/crytoTrader/integration" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestGeneral_GetPing in github.com/brharrelldev/crytoTrader/general" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="cryptoTrader" />
-      <working_directory value="$PROJECT_DIR$" />
+      <working_directory value="$PROJECT_DIR$/../cryptoTrader/general" />
+      <framework value="gotest" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/integration/integration.go" />
-      <package value="github.com/brharrelldev/crytoTrader/integration" />
+      <package value="github.com/brharrelldev/crytoTrader/general" />
       <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestGeneral_GetPing$" />
       <method v="2" />
     </configuration>
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
@@ -81,14 +85,18 @@
       <filePath value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="build-client" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="build-client" workingDirectory="" arguments="">
-        <envs />
-      </makefile>
+    <configuration name="go test github.com/brharrelldev/crytoTrader/general" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="cryptoTrader" />
+      <working_directory value="$PROJECT_DIR$/../cryptoTrader/general" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="github.com/brharrelldev/crytoTrader/general" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="make-bin" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
-      <makefile filename="$PROJECT_DIR$/Makefile" target="make-bin" workingDirectory="" arguments="">
+    <configuration name="test-build" type="MAKEFILE_TARGET_RUN_CONFIGURATION" factoryName="Makefile" temporary="true">
+      <makefile filename="$PROJECT_DIR$/../cryptoTrader/Makefile" target="test-build" workingDirectory="" arguments="">
         <envs />
       </makefile>
       <method v="2" />
@@ -104,11 +112,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Makefile.test-build" />
+        <item itemvalue="Go Test.go test github.com/brharrelldev/crytoTrader/general" />
+        <item itemvalue="Go Test.TestGeneral_GetPing in github.com/brharrelldev/crytoTrader/general" />
+        <item itemvalue="Go Test.TestGeneral_CheckServiceTime in github.com/brharrelldev/crytoTrader/general" />
         <item itemvalue="Docker.workflows/Dockerfile" />
-        <item itemvalue="Makefile.build-client" />
-        <item itemvalue="Makefile.make-bin" />
-        <item itemvalue="Go Build.go build github.com/brharrelldev/crytoTrader/client" />
-        <item itemvalue="Go Build.go build github.com/brharrelldev/crytoTrader/integration" />
       </list>
     </recent_temporary>
   </component>
@@ -142,28 +150,32 @@
     <proxy>direct</proxy>
   </component>
   <component name="WindowStateProjectService">
-    <state width="2518" height="395" key="GridCell.Tab.0.bottom" timestamp="1580669636238">
+    <state x="2666" y="340" key="#go_test_github.com/brharrelldev/crytoTrader/general" timestamp="1580680814027">
+      <screen x="1680" y="0" width="2560" height="1440" />
+    </state>
+    <state x="2666" y="340" key="#go_test_github.com/brharrelldev/crytoTrader/general/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580680814027" />
+    <state width="2518" height="395" key="GridCell.Tab.0.bottom" timestamp="1580680984720">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state width="1638" height="267" key="GridCell.Tab.0.bottom/0.0.1680.1050@0.0.1680.1050" timestamp="1580615388891" />
-    <state width="2518" height="395" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580669636238" />
-    <state width="2518" height="395" key="GridCell.Tab.0.center" timestamp="1580669636237">
+    <state width="2518" height="395" key="GridCell.Tab.0.bottom/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580680984720" />
+    <state width="2518" height="395" key="GridCell.Tab.0.center" timestamp="1580680984719">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state width="1638" height="267" key="GridCell.Tab.0.center/0.0.1680.1050@0.0.1680.1050" timestamp="1580615388808" />
     <state width="1638" height="267" key="GridCell.Tab.0.center/0.23.1680.954@0.0.1680.977" timestamp="1580615388690" />
-    <state width="2518" height="395" key="GridCell.Tab.0.center/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580669636237" />
-    <state width="2518" height="395" key="GridCell.Tab.0.left" timestamp="1580669636236">
+    <state width="2518" height="395" key="GridCell.Tab.0.center/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580680984719" />
+    <state width="2518" height="395" key="GridCell.Tab.0.left" timestamp="1580680984718">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state width="1638" height="267" key="GridCell.Tab.0.left/0.0.1680.1050@0.0.1680.1050" timestamp="1580615388805" />
     <state width="1638" height="267" key="GridCell.Tab.0.left/0.23.1680.954@0.23.1680.954" timestamp="1580615388604" />
-    <state width="2518" height="395" key="GridCell.Tab.0.left/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580669636236" />
-    <state width="2518" height="395" key="GridCell.Tab.0.right" timestamp="1580669636237">
+    <state width="2518" height="395" key="GridCell.Tab.0.left/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580680984718" />
+    <state width="2518" height="395" key="GridCell.Tab.0.right" timestamp="1580680984720">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state width="1638" height="267" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1580615388840" />
-    <state width="2518" height="395" key="GridCell.Tab.0.right/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580669636237" />
+    <state width="2518" height="395" key="GridCell.Tab.0.right/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580680984720" />
     <state x="2491" y="359" key="SettingsEditor" timestamp="1580666638657">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
@@ -172,11 +184,14 @@
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state x="2596" y="461" width="727" height="518" key="find.popup/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580671571265" />
-    <state x="2450" y="316" width="1021" height="1017" key="search.everywhere.popup" timestamp="1580663633697">
+    <state x="2450" y="316" width="1021" height="1017" key="search.everywhere.popup" timestamp="1580679896885">
       <screen x="1680" y="0" width="2560" height="1440" />
     </state>
     <state x="505" y="233" key="search.everywhere.popup/0.23.1680.956@0.23.1680.956" timestamp="1580582103629" />
     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup/0.23.1680.958@0.23.1680.958" timestamp="1580586920100" />
-    <state x="2450" y="316" width="1021" height="1017" key="search.everywhere.popup/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580663633697" />
+    <state x="2450" y="316" width="1021" height="1017" key="search.everywhere.popup/1680.0.2560.1440/0.0.1680.1050@1680.0.2560.1440" timestamp="1580679896885" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/cryptoTrader$go_test_github_com_brharrelldev_crytoTrader_general.out" NAME="go test github.com/brharrelldev/crytoTrader/general Coverage Results" MODIFIED="1580680858146" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

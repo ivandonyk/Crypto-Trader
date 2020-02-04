@@ -11,7 +11,7 @@ const (
 	baseURL = "https://api.binance.com"
 )
 
-//Binance commands
+//BinanceCmd is for the binance sub-command
 var BinanceCmd cli.Command
 
 func init() {

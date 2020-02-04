@@ -9,5 +9,8 @@ build-all: build-client
 make-bin:
 	mkdir -p ./bin
 
+test-build:
+	go test -cover ./...
+
 build-client: make-bin
 	go build -ldflags="-X 'main.Version=$(VERSION)'" -o $(CLIENT_BIN) client/*.go

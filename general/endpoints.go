@@ -9,11 +9,12 @@ import (
 )
 
 const (
-	EndpointPing         = "/api/v3/ping"
-	EndpointTime         = "/api/v3/time"
-	EndpointExchangeInfo = "/api/v3/exchangeInfo"
+	endpointPing         = "/api/v3/ping"
+	endpointTime         = "/api/v3/time"
+	endpointExchangeInfo = "/api/v3/exchangeInfo"
 )
 
+//General is a struct for finance general API
 type General struct {
 	baseURL         string
 	pingRequestFunc func() (*pingResponse, error)
@@ -26,7 +27,7 @@ type checkServerTimeResponse struct {
 type pingResponse struct {
 }
 
-//General API object
+//NewGeneralAPI constructor for Binance General API
 func NewGeneralAPI(c *config.Config) (*General, error) {
 
 	return &General{
@@ -35,12 +36,12 @@ func NewGeneralAPI(c *config.Config) (*General, error) {
 
 }
 
-// will be used elsewhere in application
-func (g *General) GetPing() (*pingResponse, error) {
+//GetPing mirrors the Binance API.  This checks for liveness of the server.  It usually returns an empty response
+func (g *General) GetPing() (*pingResponse, error) { //test comment
 
 	var pingResp *pingResponse
 
-	req, err := http.NewRequest(http.MethodGet, lib.URLJoin(g.baseURL, EndpointPing), nil)
+	req, err := http.NewRequest(http.MethodGet, lib.URLJoin(g.baseURL, endpointPing), nil)
 	if err != nil {
 		return nil, fmt.Errorf("error building new request object")
 	}
@@ -61,11 +62,11 @@ func (g *General) GetPing() (*pingResponse, error) {
 	return pingResp, nil
 }
 
-// will be used elsewhere in application
+//CheckServiceTime will check the server's time.  Will return response in unix format.  This is set as a int64
 func (g *General) CheckServiceTime() (*checkServerTimeResponse, error) {
 	var checkServerResponse *checkServerTimeResponse
 
-	req, err := http.NewRequest(http.MethodGet, lib.URLJoin(g.baseURL, EndpointTime), nil)
+	req, err := http.NewRequest(http.MethodGet, lib.URLJoin(g.baseURL, endpointTime), nil)
 	if err != nil {
 		return nil, fmt.Errorf("error building request %v", err)
 	}
@@ -87,14 +88,13 @@ func (g *General) CheckServiceTime() (*checkServerTimeResponse, error) {
 
 }
 
-// used for formatting to json format for display
+//ToJson is to format a json string for pingResponse.
 func (p *pingResponse) ToJson() (string, error) {
-
 	return lib.ToJson(p)
 
 }
 
-// used to format to json format to relay information back to user
+//ToJson to format to json string for checkServerTimeResponse
 func (cs *checkServerTimeResponse) ToJson() (string, error) {
 	return lib.ToJson(cs)
 

@@ -1,16 +1,19 @@
 BINDIR = bin
-MKBIN = mkdir -p bin
-CLIENT_BIN = $(BINDIR)/cryto-trader
+CLIENT_BIN = $(BINDIR)/ct-cli
+SERVER_BIN = $(BINDIR)/ct-server
 VERSION := $(shell cat version.txt)
 
 
-build-all: build-client
+protos:
+	protoc -I. -I$(GOPATH)/src  -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapi --go_out=plugins=grpc:. api/binance/*.proto
 
-make-bin:
-	mkdir -p ./bin
+build-all: protos build-client build-server
 
 test-build:
 	go test -cover ./...
 
-build-client: make-bin
+build-client:
 	go build -ldflags="-X 'main.Version=$(VERSION)'" -o $(CLIENT_BIN) client/*.go
+
+build-server:
+	go build -ldflags="-X 'main.Version=$(VERSION)'"  -o $(SERVER_BIN) server/*.go

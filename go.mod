@@ -1,15 +1,12 @@
-module github.com/brharrelldev/crytoTrader
+module github.com/ivandonyk/Crypto-Trader
 
 go 1.13
 
 require (
-	github.com/alecthomas/gometalinter v3.0.0+incompatible // indirect
-	github.com/boltdb/bolt v1.3.1 // indirect
-	github.com/dustin/go-humanize v1.0.0 // indirect
-	github.com/gojp/goreportcard v0.0.0-20200102082842-9f8184163627 // indirect
-	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
-	github.com/prometheus/client_golang v1.4.0 // indirect
+	github.com/golang/protobuf v1.3.2
+	github.com/google/go-cmp v0.4.0 // indirect
 	github.com/urfave/cli v1.22.2
-	golang.org/x/tools v0.0.0-20200131211209-ecb101ed6550 // indirect
-	gopkg.in/alecthomas/kingpin.v3-unstable v3.0.0-20191105091915-95d230a53780 // indirect
+	golang.org/x/net v0.0.0-20190620200207-3b0461eec859 // indirect
+	golang.org/x/sys v0.0.0-20200122134326-e047566fdf82 // indirect
+	google.golang.org/grpc v1.27.1
 )

@@ -1,10 +1,13 @@
 package cmd
 
 import (
+	"context"
 	"fmt"
-	"github.com/brharrelldev/crytoTrader/config"
-	"github.com/brharrelldev/crytoTrader/general"
+	api_binance "github.com/ivandonyk/Crypto-Trader/api/binance"
+	"github.com/ivandonyk/Crypto-Trader/ct_config"
+	"github.com/ivandonyk/Crypto-Trader/exchanges/binance_api/general"
 	"github.com/urfave/cli"
+	"google.golang.org/grpc"
 )
 
 const (
@@ -28,12 +31,30 @@ func init() {
 			Name:   "ping",
 			Action: pingAction,
 		},
+		{
+			Name:    "market-depth",
+			Aliases: []string{"md"},
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:     "symbol",
+					Usage:    "market-depth --symbol=<trading pairs>",
+					Required: true,
+				},
+				cli.IntFlag{
+					Name:  "limit",
+					Usage: "display depth limit",
+				},
+			},
+			Action: getMarketDepth,
+		},
 	}
 }
 
 func pingAction(c *cli.Context) error {
-	conf := &config.Config{
-		BaseURL: baseURL,
+	conf := &ct_config.Config{
+		BinanceConfig: &ct_config.BinanceConfig{
+			BaseURL: baseURL,
+		},
 	}
 	ping, err := general.NewGeneralAPI(conf)
 	if err != nil {
@@ -56,8 +77,10 @@ func pingAction(c *cli.Context) error {
 }
 
 func serverTimeAction(c *cli.Context) error {
-	conf := &config.Config{
-		BaseURL: baseURL,
+	conf := &ct_config.Config{
+		BinanceConfig: &ct_config.BinanceConfig{
+			BaseURL: baseURL,
+		},
 	}
 
 	st, err := general.NewGeneralAPI(conf)
@@ -76,6 +99,27 @@ func serverTimeAction(c *cli.Context) error {
 	}
 
 	fmt.Println(stJson)
+
+	return nil
+}
+
+func getMarketDepth(c *cli.Context) error {
+
+	conn, err := grpc.Dial(":50051", grpc.WithInsecure())
+	if err != nil {
+		return fmt.Errorf("could not dial grpc server %v", err)
+	}
+
+	defer conn.Close()
+
+	client := api_binance.NewBinanceMarketDataClient(conn)
+
+	getMarketDepth, err := client.GetBinanceMarketDepth(context.Background(), &api_binance.GetBinanceMarketDepthRequest{
+		Symbol: c.String("symbol"),
+		Limit:  int32(c.Int("limit")),
+	})
+
+	fmt.Println(getMarketDepth)
 
 	return nil
 

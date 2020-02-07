@@ -1,0 +1,8 @@
+---
+windows:
+  - name: auth-demo
+    root: CURR_DIR
+    layout: tiled
+    panes:
+      - ./bin/ct-server
+      - ./bin/ct-cli

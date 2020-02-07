@@ -6,8 +6,10 @@ import (
 	api_binance "github.com/ivandonyk/Crypto-Trader/api/binance"
 	"github.com/ivandonyk/Crypto-Trader/ct_config"
 	"github.com/ivandonyk/Crypto-Trader/exchanges/binance_api/general"
+	"github.com/olekukonko/tablewriter"
 	"github.com/urfave/cli"
 	"google.golang.org/grpc"
+	"os"
 )
 
 const (
@@ -43,6 +45,7 @@ func init() {
 				cli.IntFlag{
 					Name:  "limit",
 					Usage: "display depth limit",
+					Value: 10,
 				},
 			},
 			Action: getMarketDepth,
@@ -119,7 +122,51 @@ func getMarketDepth(c *cli.Context) error {
 		Limit:  int32(c.Int("limit")),
 	})
 
-	fmt.Println(getMarketDepth)
+	if err != nil {
+		return fmt.Errorf("error getting market data %v", err)
+	}
+
+	var data [][]string
+	marketMap := make(map[string]map[string]map[string]string)
+	for idx, asks := range getMarketDepth.Asks {
+		idxString := string(idx)
+		for _, bids := range getMarketDepth.Bids {
+			if _, ok := marketMap[idxString]; ok {
+				continue
+			}
+			marketMap[idxString] = map[string]map[string]string{
+				"asks": {
+					"high": asks.High,
+					"low":  asks.Low,
+				},
+				"bids": {
+					"high": bids.High,
+					"low":  bids.Low,
+				},
+			}
+
+		}
+
+		//data = append()
+	}
+
+	for _, v := range marketMap {
+		askLow := v["asks"]["low"]
+		askHigh := v["asks"]["high"]
+		bidLow := v["bids"]["low"]
+		bidHigh := v["bids"]["high"]
+		record := []string{askLow, askHigh, bidLow, bidHigh}
+		data = append(data, record)
+	}
+
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"ask_low", "ask_high", "bid_low", "bid_high"})
+
+	for _, info := range data {
+		table.Append(info)
+	}
+
+	table.Render()
 
 	return nil
 

@@ -10,6 +10,7 @@ import (
 	"github.com/urfave/cli"
 	"google.golang.org/grpc"
 	"os"
+	"strconv"
 )
 
 const (
@@ -49,6 +50,23 @@ func init() {
 				},
 			},
 			Action: getMarketDepth,
+		},
+		{
+			Name:    "recent-trades",
+			Aliases: []string{"rt"},
+			Flags: []cli.Flag{
+				cli.StringFlag{
+					Name:     "symbol",
+					Usage:    "recent-trades --symbol=<trading pairs>",
+					Required: true,
+				},
+				cli.IntFlag{
+					Name:  "limit",
+					Usage: "recent-trades --limit=10",
+					Value: 10,
+				},
+			},
+			Action: getRecentTrades,
 		},
 	}
 }
@@ -146,8 +164,6 @@ func getMarketDepth(c *cli.Context) error {
 			}
 
 		}
-
-		//data = append()
 	}
 
 	for _, v := range marketMap {
@@ -164,6 +180,50 @@ func getMarketDepth(c *cli.Context) error {
 
 	for _, info := range data {
 		table.Append(info)
+	}
+
+	table.Render()
+
+	return nil
+
+}
+
+func getRecentTrades(c *cli.Context) error {
+	conn, err := grpc.Dial(":50051", grpc.WithInsecure())
+	if err != nil {
+		return fmt.Errorf("could not dial grpc server %v", err)
+	}
+
+	defer conn.Close()
+
+	client := api_binance.NewBinanceMarketDataClient(conn)
+
+	getRecentTrades, err := client.GetBinanceMarketTradesRecent(context.Background(), &api_binance.GetBinanceMarketTradesRecentRequest{
+		Symbol: c.String("symbol"),
+		Limit:  int32(c.Int("limit")),
+	})
+	if err != nil {
+		return fmt.Errorf("error getting recent trades %v", err)
+	}
+
+	var data [][]string
+	for _, trades := range getRecentTrades.Results {
+		row := []string{
+			fmt.Sprint(trades.ID),
+			strconv.FormatInt(trades.Time, 10),
+			trades.Price,
+			trades.Quantity,
+			trades.QuoteQuantity,
+			strconv.FormatBool(trades.IsBestMatch),
+			strconv.FormatBool(trades.IsBuyerMake)}
+		data = append(data, row)
+	}
+
+	table := tablewriter.NewWriter(os.Stdout)
+	table.SetHeader([]string{"trade_id", "time", "price", "quantity", "quoute_quantity", "Best_Match", "IsBuyerMarket"})
+
+	for _, i := range data {
+		table.Append(i)
 	}
 
 	table.Render()

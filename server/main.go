@@ -1,15 +1,21 @@
 package main
 
 import (
-	"fmt"
 	"github.com/ivandonyk/Crypto-Trader/ct_config"
 	"github.com/ivandonyk/Crypto-Trader/service"
+	"go.uber.org/zap"
 	"log"
 	"os"
 	"os/signal"
 )
 
 func main() {
+
+	ctLog, err := zap.NewProduction()
+	if err != nil {
+		log.Fatalf("failed initialize logs %v", err)
+	}
+
 	config := ct_config.Config{
 		BinanceConfig: &ct_config.BinanceConfig{
 			BaseURL:         "https://api.binance.com",
@@ -34,15 +40,16 @@ func main() {
 		<-sigChan
 	}()
 
+	ctLog.Info("server has been started")
+
 	signal.Notify(sigChan, os.Interrupt)
 
 	select {
 	case <-sigChan:
-		fmt.Println("stopping server")
+		ctLog.Warn("server is being stopped")
 		return
 	case err := <-errChan:
-		log.Fatalf("error occured during run %v", err)
-
+		ctLog.Fatal("error occurred during run of server", zap.Error(err))
 	}
 
 }

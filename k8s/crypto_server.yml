@@ -1,0 +1,38 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ct-server
+  labels:
+    app: ct-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ct-server
+  template:
+    metadata:
+      labels:
+        app: ct-server
+    spec:
+      containers:
+        - name: ct-server
+          image: CONTAINER
+          ports:
+            - containerPort: 50051
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ct-svc
+  labels:
+    app: ct-svc
+spec:
+  selector:
+    app: ct-server
+  ports:
+    - port: 50051
+      targetPort: 65000
+      name: "grpc"
+  type: LoadBalancer

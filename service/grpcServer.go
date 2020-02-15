@@ -29,7 +29,9 @@ func NewServer(c ct_config.Config) *Server {
 
 //StartgRPC this start the grpc server, and registers RPCs
 func (s *Server) StartgRPC() error {
-	lis, err := net.Listen("tcp", ":50051")
+
+
+	lis, err := net.Listen("tcp", "0.0.0.0:50051")
 	if err != nil {
 		return fmt.Errorf("error building new listner %v", err)
 	}

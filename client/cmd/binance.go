@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	api_binance "github.com/ivandonyk/Crypto-Trader/api/binance"
+	"github.com/ivandonyk/Crypto-Trader/build_tags"
 	"github.com/ivandonyk/Crypto-Trader/ct_config"
 	"github.com/ivandonyk/Crypto-Trader/exchanges/binance_api/general"
 	"github.com/olekukonko/tablewriter"
@@ -11,6 +12,7 @@ import (
 	"google.golang.org/grpc"
 	"os"
 	"strconv"
+	"strings"
 )
 
 const (
@@ -126,7 +128,9 @@ func serverTimeAction(c *cli.Context) error {
 
 func getMarketDepth(c *cli.Context) error {
 
-	conn, err := grpc.Dial(":50051", grpc.WithInsecure())
+	hostAndPort := []string{build_tags.GRPCHost, build_tags.Port}
+	host := strings.Join(hostAndPort, ":")
+	conn, err := grpc.Dial(host, grpc.WithInsecure())
 	if err != nil {
 		return fmt.Errorf("could not dial grpc server %v", err)
 	}
@@ -189,7 +193,9 @@ func getMarketDepth(c *cli.Context) error {
 }
 
 func getRecentTrades(c *cli.Context) error {
-	conn, err := grpc.Dial(":50051", grpc.WithInsecure())
+	hostAndPort := []string{build_tags.GRPCHost, build_tags.Port}
+	host := strings.Join(hostAndPort, ":")
+	conn, err := grpc.Dial(host, grpc.WithInsecure())
 	if err != nil {
 		return fmt.Errorf("could not dial grpc server %v", err)
 	}

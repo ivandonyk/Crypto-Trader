@@ -1,0 +1,50 @@
+syntax="proto3";
+
+package api.coinbase;
+
+message User{
+    string id = 1;
+    string name = 2;
+    string user_name =3;
+    string profile_name=4;
+    string profile_bio=5;
+    string profile_url=6;
+    string avatar_url=7;
+    string resource = 8;
+    string resource_path=9;
+}
+
+message UserInfoResponse{
+    string time_zone =1;
+    string native_currency=2;
+    string bitcoin_unit=3;
+    map<string,string> country = 4;
+    string created_at = 5;
+}
+
+message ShowUser{
+    string user_id = 1;
+}
+
+
+message ShowUserResponse{
+    User data =1;
+}
+
+message ShowAuthorizationInfo{
+    string method = 1;
+    repeated string scopes =2;
+}
+
+message UpdateCurrentUserRequest{
+    string name =1;
+    string time_Zone=2;
+    string native_currency=3;
+}
+
+
+
+
+
+
+

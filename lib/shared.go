@@ -1,6 +1,9 @@
 package lib
 
 import (
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/hex"
 	"encoding/json"
 	"fmt"
 	"strings"
@@ -21,4 +24,17 @@ func ToJson(resp interface{}) (string, error) {
 	}
 
 	return string(jsonBytes), nil
+}
+
+func CoinbaseAuthorize(epoch, secretKey, method string, requestPath string) string {
+	fmt.Println(requestPath)
+	message := strings.Join([]string{epoch, method, requestPath}, "")
+
+	mac := hmac.New(sha256.New, []byte(secretKey))
+	mac.Write([]byte(message))
+
+	signature := hex.EncodeToString(mac.Sum(nil))
+
+	return signature
+
 }

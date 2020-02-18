@@ -4,5 +4,5 @@ windows:
     root: CURR_DIR
     layout: tiled
     panes:
-      - ./bin/ct-server
-      - ./bin/ct-cli
+      - ./bin/local/ct-server
+      - ./bin/local/ct-cli

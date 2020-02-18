@@ -23,6 +23,20 @@ func main() {
 			TradeRecent:     "/api/v3/trades",
 			TradeHistorical: "/api/v3/historicalTrades",
 		},
+		CoinbaseConfig: &ct_config.CoinbaseConfig{
+			BaseURL:        "https://api.coinbase.com",
+			APIKey:         os.Getenv("CT_COINBASE_API_KEY"),
+			APISecret:      os.Getenv("CT_COINBASE_API_SECRET"),
+			User:           "/v2/user",
+			Accounts:       "/v2/accounts",
+			Addresses:      "/v2/accounts/%s/addresses/",
+			Transactions:   "/v2/accounts/%s/transactions/",
+			Buys:           "/v2/accounts/%s/buys",
+			Sells:          "/v2/accounts/%s/sells",
+			Deposits:       "/v2/accounts/%s/sells",
+			Withdrawals:    "/v2/accounts/%s/withdrawals",
+			PaymentMethods: "v2/payment-methods",
+		},
 	}
 
 	s := service.NewServer(config)

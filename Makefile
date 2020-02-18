@@ -9,8 +9,8 @@ DOMAIN=gcr.io/bharrellcloud
 
 
 protos:
-	protoc -I. -I$(GOPATH)/src  -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapi --go_out=plugins=grpc:. api/binance/*.proto
-	protoc -I. -I$(GOPATH)/src  -I$(GOPATH)/src/github.com/grpc-ecosystem/grpc-gateway/third_party/googleapi --go_out=plugins=grpc:. api/coinbase/*.proto
+	protoc -I. -I$(GOPATH)/src  --go_out=plugins=grpc:. api/binance/*.proto
+	protoc -I. -I$(GOPATH)/src  --go_out=plugins=grpc:. api/coinbase/*.proto
 
 build-all: protos build-client build-server-local
 

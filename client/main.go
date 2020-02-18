@@ -16,6 +16,7 @@ func main() {
 	app.Usage = "crypto-trader <exchange> action"
 	app.Commands = []cli.Command{
 		cmd.BinanceCmd,
+		cmd.CoinbaseCmd,
 	}
 
 	if err := app.Run(os.Args); err != nil {

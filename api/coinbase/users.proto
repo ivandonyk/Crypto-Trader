@@ -43,6 +43,13 @@ message UpdateCurrentUserRequest{
 }
 
 
+service CoinbaseUsers{
+    rpc ShowCurrentUser(ShowUser) returns (ShowUserResponse){
+
+    };
+}
+
+
 
 
 
